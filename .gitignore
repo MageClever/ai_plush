@@ -1,0 +1,45 @@
+# =============================================================
+#  AI Plush — Magento 2 project repository (repo root = Magento root)
+#
+#  Strategy (whitelist): ignore EVERYTHING, then explicitly
+#  un-ignore only the source we maintain. This guarantees that
+#  Magento core (vendor/, lib/, setup/, bin/, dev/, pub/, ...),
+#  build artifacts and secrets are never committed. A fresh
+#  checkout + `composer install` (with your own auth.json)
+#  reconstructs the full application.
+# =============================================================
+
+# --- ignore everything by default ---
+/*
+
+# --- base files required to `composer install` the project ---
+!/.gitignore
+!/composer.json
+!/composer.lock
+
+# ----------------------------------------------------------------
+#  Our custom code — UNCOMMENT to start tracking after review
+#  (theme built by previous agent is pending evaluation)
+# ----------------------------------------------------------------
+# !/app/
+# /app/*
+# !/app/code/
+# /app/code/*
+# !/app/code/AIPlush/
+# !/app/design/
+# /app/design/*
+# !/app/design/frontend/
+# /app/design/frontend/*
+# !/app/design/frontend/AIPlush/
+
+# ----------------------------------------------------------------
+#  Never commit — secrets, environment, build artifacts
+#  (guard for when app/ is un-ignored above)
+# ----------------------------------------------------------------
+/auth.json
+/app/etc/env.php
+/app/etc/config.php
+/generated/
+/pub/static/
+/pub/media/
+/var/
