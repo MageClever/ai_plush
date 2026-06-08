@@ -18,19 +18,19 @@
 !/composer.lock
 
 # ----------------------------------------------------------------
-#  Our custom code — UNCOMMENT to start tracking after review
-#  (theme built by previous agent is pending evaluation)
+#  Our custom code — tracked (whitelist enabled)
 # ----------------------------------------------------------------
-# !/app/
-# /app/*
-# !/app/code/
-# /app/code/*
-# !/app/code/AIPlush/
-# !/app/design/
-# /app/design/*
-# !/app/design/frontend/
-# /app/design/frontend/*
-# !/app/design/frontend/AIPlush/
+!/app/
+/app/*
+!/app/code/
+/app/code/*
+!/app/code/MageClever/
+!/app/code/Magiccart/
+!/app/design/
+/app/design/*
+!/app/design/frontend/
+/app/design/frontend/*
+!/app/design/frontend/MageClever/
 
 # ----------------------------------------------------------------
 #  Never commit — secrets, environment, build artifacts
@@ -43,3 +43,4 @@
 /pub/static/
 /pub/media/
 /var/
+.gitnexus
