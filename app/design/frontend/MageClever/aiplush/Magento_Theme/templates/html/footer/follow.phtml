@@ -1,0 +1,25 @@
+<?php
+/**
+ * Footer tier 2 — white strip: "Follow" label + social CMS block + app badges.
+ * Social links come from the editable CMS block (aiplush_footer_social).
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+?>
+<div class="aip-foot__strip">
+    <div class="aip-foot__strip-inner">
+        <div class="aip-foot__follow-group">
+            <span class="aip-foot__follow-label"><?= $block->escapeHtml(__('Follow AI Plush')) ?></span>
+            <?= $block->getChildHtml('aip.footer.social') ?>
+        </div>
+        <div class="aip-foot__apps">
+            <a class="aip-foot__app" href="#" rel="noopener">
+                <svg class="aip-icon aip-icon--sm"><use href="#icon-play"></use></svg>
+                <?= $block->escapeHtml(__('Google Play')) ?>
+            </a>
+            <a class="aip-foot__app" href="#" rel="noopener">
+                <?= $block->escapeHtml(__('App Store')) ?>
+            </a>
+        </div>
+    </div>
+</div>

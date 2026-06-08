@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * AI Plush storefront — global layout (every page).
+ * - Icon sprite + dismissible announcement bar at body start (not sticky).
+ * - Header: custom 3-column row (search · wordmark · actions) reusing the core
+ *   search / minicart blocks, moved under a single template block.
+ * - Footer: 3 tiers (back-to-top · white social strip · dark community + columns).
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- ===== body start: icon sprite (hidden) + announcement strip ===== -->
+        <referenceContainer name="after.body.start">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="aip.icons.sprite"
+                   template="Magento_Theme::html/icons-sprite.phtml"
+                   before="-"/>
+            <block class="Magento\Framework\View\Element\Template"
+                   name="aip.announcement"
+                   after="aip.icons.sprite"
+                   template="Magento_Theme::html/announcement.phtml">
+                <block class="Magento\Cms\Block\Block" name="aip.announcement.cms">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">aiplush_announcement_bar</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+
+        <!-- ===== header: custom 3-column row ===== -->
+        <referenceContainer name="header-wrapper">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="aip.header"
+                   template="Magento_Theme::html/header/content.phtml"/>
+        </referenceContainer>
+        <move element="logo" destination="aip.header" as="logo"/>
+        <move element="top.search" destination="aip.header" as="search"/>
+        <move element="minicart" destination="aip.header" as="minicart"/>
+
+        <!-- ===== footer: 3 tiers ===== -->
+        <referenceBlock name="footer_links" remove="true"/>
+        <referenceContainer name="footer">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="aip.footer.backtotop"
+                   before="-"
+                   template="Magento_Theme::html/footer/back-to-top.phtml"/>
+            <block class="Magento\Framework\View\Element\Template"
+                   name="aip.footer.follow"
+                   after="aip.footer.backtotop"
+                   template="Magento_Theme::html/footer/follow.phtml">
+                <block class="Magento\Cms\Block\Block" name="aip.footer.social">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">aiplush_footer_social</argument>
+                    </arguments>
+                </block>
+            </block>
+            <block class="Magento\Framework\View\Element\Template"
+                   name="aip.footer.main"
+                   after="aip.footer.follow"
+                   template="Magento_Theme::html/footer/main.phtml">
+                <block class="Magento\Cms\Block\Block" name="aip.footer.columns">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">aiplush_footer_columns</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+        <move element="form.subscribe" destination="aip.footer.main" as="subscribe"/>
+        <move element="copyright" destination="aip.footer.main" as="copyright"/>
+    </body>
+</page>

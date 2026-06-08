@@ -1,0 +1,23 @@
+// ============================================================
+// AI Plush — icon helper (consumes the inline SVG sprite)
+// Usage in templates:
+//   <svg class="aip-icon"><use href="#icon-search"></use></svg>
+// Icons inherit text color via currentColor; size via the modifier classes.
+// ============================================================
+
+.aip-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex: none;
+  color: inherit;
+  vertical-align: middle;
+  pointer-events: none;
+
+  &--sm { width: 16px; height: 16px; }
+  &--md { width: 20px; height: 20px; }
+  &--lg { width: 24px; height: 24px; }
+  &--xl { width: 28px; height: 28px; }
+
+  use { color: inherit; }
+}

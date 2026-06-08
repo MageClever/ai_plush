@@ -1,0 +1,23 @@
+{
+    "name": "mageclever/module-base",
+    "description": "AI Plush storefront foundation module (shared CMS content, ViewModels, blocks)",
+    "type": "magento2-module",
+    "license": [
+        "proprietary"
+    ],
+    "require": {
+        "php": "~8.2.0||~8.3.0||~8.4.0||~8.5.0",
+        "magento/framework": "*",
+        "magento/module-cms": "*",
+        "magento/module-store": "*",
+        "magento/module-theme": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "MageClever\\Base\\": ""
+        }
+    }
+}

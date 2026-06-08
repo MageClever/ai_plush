@@ -1,0 +1,118 @@
+// ============================================================
+// AI Plush — design tokens
+// Source of truth: design_handoff_storefront/design_reference/colors_and_type.css
+//
+// Two layers:
+//  1. LESS variables (@aip-*)  → used to override Magento/blank LESS variables
+//                                in _theme.less.
+//  2. :root CSS custom props   → consumed by component CSS (_components.less),
+//                                mirroring the prototype's var(--*) names so the
+//                                design CSS ports near-verbatim.
+// ============================================================
+
+// ---------- Neutrals ----------
+@aip-bg-base:  #FFFFFF;
+@aip-bg-soft:  #F7F7F7;
+@aip-ink:      #1A1A1A;   // never #000
+@aip-ink-mute: #666666;
+@aip-ink-soft: #999999;
+@aip-ink-line: #E5E5E5;
+
+// ---------- Saturated accents (full-bleed banners only) ----------
+@aip-cyan:     #00B8FF;
+@aip-yellow:   #FFD800;
+@aip-pink:     #FF1493;
+@aip-green:    #4CFF7A;
+@aip-sky:      #5BC8E5;
+@aip-red:      #FF3D5C;
+@aip-purple:   #7C4DFF;
+@aip-orange:   #FF7733;
+
+// ---------- Series ----------
+@aip-series-ronoo:  @aip-orange;
+@aip-series-ledodo: @aip-green;
+@aip-series-mood:   @aip-yellow;
+@aip-series-hug:    @aip-purple;
+
+// ---------- CTA / price / semantic ----------
+@aip-cta:        @aip-ink;
+@aip-cta-hover:  #333333;
+@aip-cta-accent: @aip-red;
+@aip-cta-cyan:   @aip-cyan;
+@aip-price:      @aip-ink;
+@aip-price-was:  @aip-ink-soft;
+@aip-price-sale: @aip-red;
+@aip-success:    @aip-green;
+@aip-error:      @aip-red;
+@aip-warning:    @aip-yellow;
+
+// ---------- Type ----------
+@aip-font-display: 'DM Sans', 'Be Vietnam Pro', Helvetica, Arial, sans-serif;
+@aip-font-body:    'Inter', 'Be Vietnam Pro', Helvetica, Arial, sans-serif;
+
+// ---------- Spacing ----------
+@aip-s1:4px; @aip-s2:8px; @aip-s3:12px; @aip-s4:16px; @aip-s5:20px; @aip-s6:24px;
+@aip-s8:32px; @aip-s10:40px; @aip-s14:56px; @aip-s20:80px; @aip-s30:120px;
+@aip-container: 1440px;
+
+// ---------- Radius ----------
+@aip-r-sm:4px; @aip-r-md:8px; @aip-r-lg:12px; @aip-r-xl:20px; @aip-r-pill:999px;
+
+// ---------- Shadow ----------
+@aip-sh-xs: 0 1px 2px rgba(0,0,0,0.04);
+@aip-sh-sm: 0 2px 6px rgba(0,0,0,0.06);
+@aip-sh-md: 0 4px 12px rgba(0,0,0,0.08);
+@aip-sh-lg: 0 8px 20px rgba(0,0,0,0.10);
+
+// ---------- Motion ----------
+@aip-ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+@aip-ease-snap: cubic-bezier(0.32, 0.72, 0, 1);
+@aip-dur-fast: 150ms; @aip-dur-base: 250ms; @aip-dur-slow: 400ms;
+
+// ============================================================
+// CSS custom properties bridge (LESS → runtime CSS vars)
+// Names mirror design_reference/colors_and_type.css + ui_kit/styles.css.
+// ============================================================
+:root {
+  --font-display: @aip-font-display;
+  --font-body:    @aip-font-body;
+
+  --bg-base: @aip-bg-base;
+  --bg-soft: @aip-bg-soft;
+  --ink:      @aip-ink;
+  --ink-mute: @aip-ink-mute;
+  --ink-soft: @aip-ink-soft;
+  --ink-line: @aip-ink-line;
+
+  --electric-cyan: @aip-cyan;
+  --hot-yellow:    @aip-yellow;
+  --hot-pink:      @aip-pink;
+  --acid-green:    @aip-green;
+  --sky-blue:      @aip-sky;
+  --candy-red:     @aip-red;
+  --cosmos-purple: @aip-purple;
+  --sherbet-orange:@aip-orange;
+
+  --cta-primary: @aip-cta;
+  --cta-hover:   @aip-cta-hover;
+  --cta-accent:  @aip-cta-accent;
+  --cta-cyan:    @aip-cta-cyan;
+  --price:       @aip-price;
+  --price-was:   @aip-price-was;
+  --price-sale:  @aip-price-sale;
+  --success:     @aip-success;
+  --error:       @aip-error;
+  --warning:     @aip-warning;
+
+  --ease-soft: @aip-ease-soft;
+  --ease-snap: @aip-ease-snap;
+  --dur-fast: @aip-dur-fast;
+  --dur-base: @aip-dur-base;
+  --dur-slow: @aip-dur-slow;
+
+  // Local helpers from ui_kit/styles.css
+  --tile: #F5F5F6;          // product image tile
+  --points: #A8763E;        // loyalty points gold/brown
+  --band-green: #3C9E5C;    // deeper Ledodo green for spotlight band
+  --ann-bg: #F2F2F2;        // announcement bar light gray
+}

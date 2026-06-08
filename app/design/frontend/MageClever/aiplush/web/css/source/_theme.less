@@ -1,0 +1,71 @@
+// ============================================================
+// AI Plush — Magento/blank variable overrides
+// Imported by styles-m.less / styles-l.less BEFORE _extend.less,
+// so @aip-* tokens defined here are in scope for component styles.
+// ============================================================
+
+@import '_tokens.less';
+
+// ---------- Preserve blank's _theme.less variable (this file overrides it) ----------
+@form-field-note-icon-font__content: false;
+
+// ---------- Palette ----------
+@primary__color:          @aip-ink;
+@page__background-color:  @aip-bg-base;
+@text__color:             @aip-ink;
+@border-color__base:      @aip-ink-line;
+
+// ---------- Links ----------
+@link__color:             @aip-ink;
+@link__hover__color:      @aip-cta-hover;
+@link__text-decoration:        none;
+@link__hover__text-decoration: underline;
+
+// ---------- Typography ----------
+@font-family__base:          @aip-font-body;
+@heading__font-family__base: @aip-font-display;
+@font-weight__heavier:       800;
+
+// ---------- Primary button (ink-black pill) ----------
+@button-primary__background:               @aip-ink;
+@button-primary__border:                   1px solid @aip-ink;
+@button-primary__color:                    #ffffff;
+@button-primary__hover__background:        @aip-cta-hover;
+@button-primary__hover__border:            1px solid @aip-cta-hover;
+@button-primary__hover__color:             #ffffff;
+@button__border-radius:                    @aip-r-pill;
+
+// ---------- Focus (a11y) ----------
+@focus__color: @aip-cyan;
+
+// ============================================================
+// Base elements — override Magento/blank LESS variables.
+// (Restyle forms / messages / breadcrumbs / pager via variables
+//  rather than rewriting CSS — finer touches live in _aip-base.less.)
+// ============================================================
+
+// ---------- Form inputs ----------
+@form-element-input__background:        @aip-bg-base;
+@form-element-input__border-color:      @aip-ink-line;
+@form-element-input__border:            1px solid @form-element-input__border-color;
+@form-element-input__border-radius:     @aip-r-md;
+@form-element-input__height:            44px;
+@form-element-input__padding:           0 16px;
+@form-element-input__font-family:       @aip-font-body;
+@form-element-input__color:             @aip-ink;
+@form-element-input-placeholder__color: @aip-ink-soft;
+
+// ---------- Breadcrumbs ----------
+@breadcrumbs__font-size:             12px;
+@breadcrumbs-link__color:            @aip-ink-mute;
+@breadcrumbs-link__text-decoration:  none;
+@breadcrumbs-current__color:         @aip-ink;
+@breadcrumbs-link__hover__color:     @aip-ink;
+
+// ---------- Pager ----------
+@pager__font-family:         @aip-font-display;
+@pager__font-weight:         700;
+@pager__color:               @aip-ink-mute;
+@pager__text-decoration:     none;
+@pager-current__color:       @aip-ink;
+@pager-current__font-weight: 800;

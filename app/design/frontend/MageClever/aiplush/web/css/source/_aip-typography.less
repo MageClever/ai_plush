@@ -1,0 +1,118 @@
+// ============================================================
+// AI Plush — typography: @font-face + display type scale
+// Fonts self-hosted in web/fonts/. @{baseDir} resolves to the
+// theme web/ root during Magento LESS compilation.
+// ============================================================
+
+// ---- DM Sans (variable, display: headlines, prices, drop dates) ----
+@font-face {
+  font-family: 'DM Sans';
+  src: url('@{baseDir}fonts/DMSans-Variable.ttf') format('truetype-variations');
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+// ---- Inter (variable, body) ----
+@font-face {
+  font-family: 'Inter';
+  src: url('@{baseDir}fonts/Inter-Variable.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+// ---- Be Vietnam Pro (VN diacritics fallback, 4 static weights) ----
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('@{baseDir}fonts/BeVietnamPro-Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('@{baseDir}fonts/BeVietnamPro-Medium.ttf') format('truetype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('@{baseDir}fonts/BeVietnamPro-SemiBold.ttf') format('truetype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('@{baseDir}fonts/BeVietnamPro-Bold.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+// ---------------- base ----------------
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+// ---------------- display type scale ----------------
+// Hero H1
+.aip-h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0;
+}
+
+// Section H2
+.aip-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0;
+
+  &--upper { text-transform: uppercase; letter-spacing: 0.01em; }
+}
+
+// Mega shout (BLIND BOXES, product names behind figure)
+.aip-mega-head {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(46px, 7.5vw, 100px);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+  color: var(--ink);
+  margin: 0;
+}
+
+// Eyebrow / label
+.aip-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-mute);
+}
+
+// Drop date — tabular-nums, centered
+.aip-dropdate {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+// Body sub
+.aip-sub {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+}

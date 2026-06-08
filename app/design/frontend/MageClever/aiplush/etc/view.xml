@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * AI Plush storefront — image roles.
+ * Product card uses a 3:4 portrait tile (Pop Mart studio-white look);
+ * "pick" (blind-box) cards are 1:1. `type` maps each custom role to a
+ * stored product image role (small_image / thumbnail) per view.xsd.
+ */
+-->
+<view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/view.xsd">
+    <media>
+        <images module="Magento_Catalog">
+            <!-- 3:4 portrait grid card (New Arrivals, Blind Boxes, Recommend) -->
+            <image id="plush_card" type="small_image">
+                <width>600</width>
+                <height>800</height>
+                <aspect_ratio>true</aspect_ratio>
+                <frame>false</frame>
+                <transparency>true</transparency>
+                <background>[255,255,255]</background>
+            </image>
+            <!-- 1:1 square "pick" card (POP NOW blind-box mystery) -->
+            <image id="plush_pick" type="thumbnail">
+                <width>500</width>
+                <height>500</height>
+                <aspect_ratio>true</aspect_ratio>
+                <frame>false</frame>
+                <transparency>true</transparency>
+                <background>[255,255,255]</background>
+            </image>
+        </images>
+    </media>
+</view>

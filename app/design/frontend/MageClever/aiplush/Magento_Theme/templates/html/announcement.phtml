@@ -1,0 +1,21 @@
+<?php
+/**
+ * Announcement strip — wraps the editable CMS block (aiplush_announcement_bar)
+ * and adds a dismiss control. Content comes from the CMS block (no hardcoded copy).
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+$cms = $block->getChildHtml('aip.announcement.cms');
+if (trim($cms) === '') {
+    return;
+}
+?>
+<div class="aip-announce" data-aip-announce>
+    <div class="aip-announce__inner">
+        <?= /* @noEscape CMS content already filtered by FilterProvider */ $cms ?>
+    </div>
+    <button class="aip-announce__close" type="button" data-aip-announce-close
+            aria-label="<?= $block->escapeHtmlAttr(__('Dismiss announcement')) ?>">
+        <svg class="aip-icon aip-icon--sm"><use href="#icon-x"></use></svg>
+    </button>
+</div>

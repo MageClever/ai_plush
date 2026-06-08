@@ -1,0 +1,87 @@
+// ============================================================
+// AI Plush — base / global elements (every page).
+// Brand-level touches that blank's LESS variables don't cover:
+// form focus ring, message radius, breadcrumb spacing, pager pills.
+// Keep this light — prefer variable overrides in _theme.less first.
+// ============================================================
+
+// ---------------- forms ----------------
+input:not([type='checkbox']):not([type='radio']),
+select,
+textarea {
+  font-family: var(--font-body);
+  transition: border-color var(--dur-fast) var(--ease-soft),
+              box-shadow var(--dur-fast) var(--ease-soft);
+
+  &:focus {
+    border-color: var(--electric-cyan);
+    box-shadow: 0 0 0 3px rgba(0, 184, 255, 0.18);
+    outline: none;
+  }
+}
+
+// visible keyboard focus for interactive non-input elements (a11y)
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--electric-cyan);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+// ---------------- messages / notifications ----------------
+.message {
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+
+// ---------------- breadcrumbs ----------------
+.breadcrumbs {
+  max-width: var(--container-max, 1440px);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 16px 40px 0;
+
+  .items {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+}
+
+// ---------------- pagination ----------------
+.pages {
+  .item {
+    font-family: var(--font-display);
+  }
+
+  .pages-item-previous .action,
+  .pages-item-next .action,
+  .page {
+    border-radius: var(--radius-pill);
+    transition: background var(--dur-fast) var(--ease-soft),
+                color var(--dur-fast) var(--ease-soft);
+  }
+
+  .page:hover {
+    background: var(--bg-soft);
+  }
+
+  .item.current .page {
+    background: var(--ink);
+    color: #fff;
+  }
+}
+
+// ---------------- selection ----------------
+::selection {
+  background: var(--electric-cyan);
+  color: #fff;
+}
+
+// ---------------- responsive base ----------------
+@media (max-width: 1000px) {
+  .breadcrumbs { padding-left: 18px; padding-right: 18px; }
+}

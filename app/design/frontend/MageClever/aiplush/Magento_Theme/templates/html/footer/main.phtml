@@ -1,0 +1,50 @@
+<?php
+/**
+ * Footer tier 3 — dark area: community column (newsletter + contact) plus the
+ * three link columns (CMS), then copyright. The columns CMS block renders
+ * `.aip-foot__cols` (display:contents) so its 3 columns join this grid as a
+ * 1.4fr + 3×1fr row. Newsletter + copyright are core blocks moved in via layout.
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+?>
+<div class="aip-foot__dark">
+    <div class="aip-foot__grid">
+        <div class="aip-foot__community">
+            <h3 class="aip-foot__head"><?= $block->escapeHtml(__('Join the community')) ?></h3>
+            <p class="aip-foot__lead">
+                <?= $block->escapeHtml(__('Get news on new plushies, exclusive offers and more.')) ?>
+            </p>
+
+            <?= $block->getChildHtml('subscribe') ?>
+
+            <h3 class="aip-foot__head aip-foot__head--mt"><?= $block->escapeHtml(__('Contact')) ?></h3>
+            <div class="aip-foot__contact">
+                <a class="aip-foot__card" href="#">
+                    <span class="aip-foot__card-text">
+                        <strong><?= $block->escapeHtml(__('Chat')) ?></strong>
+                        <small><?= $block->escapeHtml(__('Mon–Sun · 8:00–22:00')) ?></small>
+                    </span>
+                    <span class="aip-foot__card-cta"><?= $block->escapeHtml(__('Chat now')) ?></span>
+                </a>
+                <a class="aip-foot__card" href="mailto:hi@aiplush.vn">
+                    <span class="aip-foot__card-text">
+                        <strong><?= $block->escapeHtml(__('Email')) ?></strong>
+                        <small>hi@aiplush.vn</small>
+                    </span>
+                    <span class="aip-foot__card-cta"><?= $block->escapeHtml(__('Send email')) ?></span>
+                </a>
+                <div class="aip-foot__region">
+                    <svg class="aip-icon aip-icon--sm"><use href="#icon-globe"></use></svg>
+                    <span><?= $block->escapeHtml(__('Vietnam')) ?> &middot; VI</span>
+                </div>
+            </div>
+        </div>
+
+        <?= $block->getChildHtml('aip.footer.columns') ?>
+    </div>
+
+    <div class="aip-foot__copyright">
+        <?= $block->getChildHtml('copyright') ?>
+    </div>
+</div>

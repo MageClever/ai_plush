@@ -1,0 +1,36 @@
+<?php
+/**
+ * Header row — 3-column grid (search · wordmark · actions). Reuses the core
+ * search + minicart blocks (moved here via layout); account / wishlist / support
+ * are icon links to their routes. Labels are translatable; no hardcoded copy.
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+?>
+<div class="aip-header__row">
+    <div class="aip-header__search">
+        <?= $block->getChildHtml('search') ?>
+    </div>
+
+    <div class="aip-header__brand">
+        <?= $block->getChildHtml('logo') ?>
+    </div>
+
+    <div class="aip-header__actions">
+        <a class="aip-header__action" href="<?= $block->escapeUrl($block->getUrl('contact')) ?>"
+           aria-label="<?= $block->escapeHtmlAttr(__('Support')) ?>">
+            <svg class="aip-icon aip-icon--md"><use href="#icon-headset"></use></svg>
+        </a>
+        <a class="aip-header__action" href="<?= $block->escapeUrl($block->getUrl('customer/account')) ?>"
+           aria-label="<?= $block->escapeHtmlAttr(__('My Account')) ?>">
+            <svg class="aip-icon aip-icon--md"><use href="#icon-user"></use></svg>
+        </a>
+        <a class="aip-header__action" href="<?= $block->escapeUrl($block->getUrl('wishlist')) ?>"
+           aria-label="<?= $block->escapeHtmlAttr(__('Wishlist')) ?>">
+            <svg class="aip-icon aip-icon--md"><use href="#icon-heart"></use></svg>
+        </a>
+        <div class="aip-header__cart">
+            <?= $block->getChildHtml('minicart') ?>
+        </div>
+    </div>
+</div>

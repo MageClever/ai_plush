@@ -1,0 +1,14 @@
+<?php
+/**
+ * AI Plush wordmark (overrides blank's image logo).
+ * Text wordmark per brand_README §ICONOGRAPHY — DM Sans 800, cyan dot accent
+ * over the "I" in "AI". No character mark (Pop Mart pattern).
+ *
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+?>
+<a class="logo aip-wordmark"
+   href="<?= $block->escapeUrl($block->getUrl('')) ?>"
+   aria-label="<?= $block->escapeHtmlAttr(__('AI Plush — Home')) ?>">
+    <span class="aip-wordmark__mark" aria-hidden="true">A<span class="aip-wordmark__i">I</span>&nbsp;Plush</span>
+</a>

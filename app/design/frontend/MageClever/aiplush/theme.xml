@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * AI Plush — boutique kidult designer plush storefront.
+ * Pop Mart-forward commerce aesthetic, Vietnamese boutique voice.
+ */
+-->
+<theme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/theme.xsd">
+    <title>AI Plush Storefront</title>
+    <parent>Magento/blank</parent>
+</theme>

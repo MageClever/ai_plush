@@ -1,0 +1,283 @@
+// ============================================================
+// AI Plush — footer (3 tiers). Matches the prototype:
+//  1. back-to-top  ·  2. white strip (follow + apps)  ·  3. dark area
+//     (1.4fr community col + 3 link columns) + copyright.
+// ============================================================
+
+.page-footer { margin-top: var(--space-20, 80px); background: var(--bg-base); }
+
+// Undo blank's _layout.less max-width/padding on .footer.content so each tier can
+// go full-bleed (the dark area especially). Inner wrappers handle the 1440 centering.
+.page-footer .footer.content {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+// ---------------- tier 1: back to top ----------------
+.aip-foot__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+  padding: 20px 0;
+  background: none;
+  border: 0;
+  color: var(--ink-mute);
+  font-family: var(--font-body);
+  font-size: 12px;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-soft);
+  &:hover { color: var(--ink); }
+}
+
+// ---------------- tier 2: white strip ----------------
+.aip-foot__strip { border-top: 1px solid var(--ink-line); }
+
+.aip-foot__strip-inner {
+  max-width: var(--container-max, 1440px);
+  margin: 0 auto;
+  padding: 28px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.aip-foot__follow-group { display: flex; align-items: center; gap: 18px; }
+
+.aip-foot__follow-label {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+// social CMS block: plain icons (not circles) in the white strip
+.aip-foot__follow { display: inline-flex; align-items: center; gap: 14px; }
+.aip-foot__social {
+  display: inline-flex;
+  color: var(--ink);
+  transition: opacity var(--dur-fast) var(--ease-soft);
+  &:hover { opacity: 0.55; }
+}
+
+.aip-foot__apps { display: flex; gap: 12px; }
+
+// `a.` + parent class beats blank's `.footer.content a` (else white text vanishes on the dark pill)
+.aip-foot__strip a.aip-foot__app {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  text-decoration: none;
+  transition: background var(--dur-fast) var(--ease-soft);
+  &:hover { background: var(--cta-hover); color: #fff; }
+}
+
+// ---------------- tier 3: dark area ----------------
+.aip-foot__dark { background: #0F0F10; color: #fff; }
+
+.aip-foot__grid {
+  max-width: var(--container-max, 1440px);
+  margin: 0 auto;
+  padding: 48px 40px;
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 40px;
+}
+
+// promote the 3 CMS columns into the grid as siblings of the community column
+.aip-foot__cols { display: contents; }
+
+.aip-foot__head {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+  margin: 0 0 16px;
+
+  &--mt { margin-top: 28px; }
+}
+
+.aip-foot__lead {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 14px;
+}
+
+// newsletter (form.subscribe) inside the community column.
+// `.page-footer` prefix outranks blank's `.footer.content .block{float:right}`
+// and `.block.newsletter .field.newsletter{max-width:220px}`.
+.page-footer .aip-foot__community {
+  .block.newsletter {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 0 6px;
+    float: none;
+    .title { display: none; }
+    // Robust input-with-overlay-button (avoids flex distribution issues):
+    // the form is the white box; the input fills it with right padding; the
+    // button is absolutely positioned inside on the right.
+    .field.newsletter { margin: 0; width: 100%; max-width: none; }
+    .form.subscribe {
+      position: relative;
+      display: block;
+      width: 100%;            // match the 340px cards below
+      background: #fff;
+      border-radius: 4px;
+      transition: box-shadow var(--dur-fast) var(--ease-soft);
+      // clean a11y ring on the whole box (no inner cyan glow/smudge)
+      &:focus-within { box-shadow: 0 0 0 2px rgba(0, 184, 255, 0.45); }
+    }
+    .control { border: 0; width: 100%; }
+    .control:before { display: none; } // hide blank's envelope icon-font
+    .control input {
+      position: static;
+      width: 100%;
+      height: auto;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      padding: 12px 96px 12px 14px; // right padding leaves room for the button
+      // kill base.less's inner cyan focus glow + Magento's red error border
+      // (both caused the smudge + the box growing on validation)
+      &:focus { box-shadow: none; border: 0; outline: none; }
+      &.mage-error { border: 0; box-shadow: none; }
+    }
+    .actions {
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: auto;
+      min-width: 84px;
+      text-align: right;
+      padding: 0;
+      margin: 0;
+    }
+    .action.subscribe {
+      white-space: nowrap;
+      display: inline-block;
+      background: none;
+      border: 0;
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      text-decoration: underline;
+      padding: 0 8px;
+      box-shadow: none;
+    }
+
+    // validation message: below the white box, on the dark bg, readable
+    div.mage-error,
+    .mage-error {
+      position: absolute;
+      top: 100%;
+      left: 2px;
+      margin-top: 6px;
+      color: #ff7a7a;
+      font-family: var(--font-body);
+      font-size: 12px;
+    }
+  }
+}
+
+.aip-foot__contact { display: flex; flex-direction: column; gap: 10px; }
+
+// `a.` prefix beats blank's `.footer.content a`; children inherit white from here
+.aip-foot__dark a.aip-foot__card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  max-width: 340px;
+  box-sizing: border-box; // so max-width is the TOTAL width (matches the 340 newsletter box)
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+  transition: border-color var(--dur-fast) var(--ease-soft);
+  &:hover { border-color: rgba(255, 255, 255, 0.4); color: #fff; }
+}
+
+.aip-foot__card {
+  &-text strong { font-size: 13px; font-weight: 700; color: #fff; }
+  &-text small { display: block; font-size: 12px; color: rgba(255, 255, 255, 0.6); }
+  &-cta { font-size: 12px; text-decoration: underline; white-space: nowrap; color: #fff; }
+}
+
+// region / language chip
+.aip-foot__region {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 200px;
+  box-sizing: border-box;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  .aip-icon { color: var(--electric-cyan); }
+}
+
+// link columns (CMS) inside the dark grid
+.aip-foot__col {
+  .aip-foot__head { margin-bottom: 16px; }
+  .aip-foot__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    li { margin: 0; }
+    a {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: color var(--dur-fast) var(--ease-soft);
+      &:hover { color: #fff; }
+    }
+  }
+}
+
+// ---------------- copyright ----------------
+.aip-foot__copyright {
+  max-width: var(--container-max, 1440px);
+  margin: 0 auto;
+  padding: 18px 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+
+  .copyright { color: inherit; }
+}
+
+@media (max-width: 1000px) {
+  .aip-foot__strip-inner,
+  .aip-foot__grid,
+  .aip-foot__copyright { padding-left: 18px; padding-right: 18px; }
+  .aip-foot__grid { grid-template-columns: 1fr 1fr; }
+  .aip-foot__community { grid-column: 1 / -1; }
+}
+
+@media (max-width: 560px) {
+  .aip-foot__grid { grid-template-columns: 1fr; }
+  .aip-foot__strip-inner { flex-direction: column; align-items: flex-start; }
+}

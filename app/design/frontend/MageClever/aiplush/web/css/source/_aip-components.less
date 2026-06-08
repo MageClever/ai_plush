@@ -1,0 +1,265 @@
+// ============================================================
+// AI Plush — common components (atomic, reused by every block)
+// Ported from design_reference/ui_kit/styles.css.
+// All classes namespaced `aip-` to avoid clashing with Magento core
+// (notably `.price` in the catalog). Templates use these class names.
+// ============================================================
+
+// ---------------- layout utilities ----------------
+.aip-wrap {
+  max-width: @aip-container;
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.aip-sec {
+  padding: 84px 0;
+  &--soft { background: var(--bg-soft); }
+}
+
+.aip-center { text-align: center; }
+
+.aip-divider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  .line { flex: 1; height: 1px; background: var(--ink-line); }
+}
+
+// modern inset rounded band (hero, collab, series spotlight)
+.aip-band {
+  margin: 16px;
+  border-radius: 32px;
+  overflow: hidden;
+  position: relative;
+}
+
+.aip-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+.aip-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+
+.aip-scroller {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+  &::-webkit-scrollbar { display: none; }
+}
+
+// checkered gingham strip (POP NOW band borders)
+.aip-checker {
+  height: 20px;
+  width: 100%;
+  background-image:
+    linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%),
+    linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%);
+  background-size: 26px 26px;
+  background-position: 0 0, 13px 13px;
+}
+
+// scroll-reveal (added by JS)
+.aip-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 600ms var(--ease-soft), transform 600ms var(--ease-snap);
+  will-change: opacity, transform;
+  &.in { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aip-reveal { opacity: 1; transform: none; transition: none; }
+}
+
+// ---------------- buttons ----------------
+.aip-btn {
+  font-family: var(--font-display);
+  font-weight: 700;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transition: all 200ms var(--ease-soft);
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:active { transform: scale(0.98); }
+
+  &--lg { font-size: 15px; padding: 15px 32px; }
+  &--md { font-size: 14px; padding: 12px 26px; }
+  &--sm { font-size: 13px; padding: 9px 18px; }
+
+  // pill variants
+  &--ink {
+    background: var(--cta-primary); color: #fff; border-radius: 999px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+    &:hover { background: var(--cta-hover); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,0.18); }
+  }
+  &--red  { background: var(--cta-accent); color: #fff; border-radius: 999px; }
+  &--cyan { background: var(--cta-cyan); color: #fff; border-radius: 999px;
+    &:hover { filter: brightness(0.94); } }
+  &--white { background: #fff; color: var(--ink); border-radius: 999px;
+    &:hover { background: #f2f2f2; } }
+
+  // rectangular outline, modernised → rounded pill, uppercase
+  &--rect {
+    background: transparent; border: 1.5px solid var(--ink); color: var(--ink);
+    border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em;
+    font-size: 13px; padding: 13px 30px;
+    &:hover { background: var(--ink); color: #fff; transform: translateY(-1px); }
+  }
+  &--rect-w {
+    background: transparent; border: 1.5px solid #fff; color: #fff;
+    border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em;
+    font-size: 13px; padding: 13px 30px;
+    &:hover { background: #fff; color: var(--ink); }
+  }
+  &--rect-soft {
+    background: rgba(255,255,255,0.16); border: none; color: #fff;
+    border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em;
+    font-size: 13px; padding: 14px 30px;
+    &:hover { background: rgba(255,255,255,0.26); }
+  }
+  // filled black rect (LEARN MORE)
+  &--blk {
+    background: var(--ink); color: #fff; border-radius: 999px; text-transform: uppercase;
+    letter-spacing: 0.05em; font-size: 13px; padding: 14px 34px; box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    &:hover { background: var(--cta-hover); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,0.18); }
+  }
+  // ghost link with arrow
+  &--ghost {
+    background: none; color: var(--ink); padding: 4px; text-decoration: underline;
+    text-underline-offset: 4px; font-size: 14px;
+  }
+}
+
+// circular carousel arrow
+.aip-carr {
+  width: 40px; height: 40px; border-radius: 999px;
+  border: 1px solid var(--ink-line); background: #fff; color: var(--ink);
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  transition: all 150ms;
+  &:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+  &:disabled { opacity: 0.4; cursor: default; }
+}
+
+// ---------------- badges ----------------
+.aip-badge {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em;
+  border-radius: 999px; padding: 4px 10px 4px 8px;
+  display: inline-flex; align-items: center; gap: 5px; line-height: 1;
+  border: 1px solid transparent;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  white-space: nowrap;
+
+  &__dot { width: 5px; height: 5px; border-radius: 999px; flex: none; }
+  &__star { color: #9B79FF; }
+
+  // tonal-light: frosted tint + same-hue text + leading dot
+  &--new     { background: rgba(46,193,118,0.14); color: #12A05A; border-color: rgba(46,193,118,0.22);
+               .aip-badge__dot { background: #18B768; } }
+  &--hot     { background: rgba(255,61,92,0.13);  color: #E11D43; border-color: rgba(255,61,92,0.22);
+               .aip-badge__dot { background: #FF3D5C; } }
+  &--limited { background: rgba(124,77,255,0.13); color: #6A3DF0; border-color: rgba(124,77,255,0.22);
+               .aip-badge__dot { background: #7C4DFF; } }
+  // special-dark
+  &--blind   { background: rgba(20,20,24,0.82); color: #fff; letter-spacing: 0.06em;
+               .aip-badge__dot { background: var(--acid-green); box-shadow: 0 0 6px rgba(76,255,122,0.7); } }
+  &--mega    { background: #1A1A1A; color: #fff; letter-spacing: 0.08em; }
+  &--sold    { background: rgba(0,0,0,0.045); color: var(--ink-soft); border-color: rgba(0,0,0,0.06); }
+  // Pop Mart black tag (modernised pill)
+  &--blk     { background: rgba(20,20,24,0.82); color: #fff; border-radius: 999px; letter-spacing: 0.06em; padding: 5px 11px; }
+}
+
+// ---------------- product card (the core unit) ----------------
+.aip-card {
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+
+  &__tile {
+    position: relative;
+    background: var(--tile);
+    border-radius: 18px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 300ms var(--ease-snap), box-shadow 300ms var(--ease-soft);
+
+    svg.fig { width: 66%; height: 66%; transition: transform 300ms var(--ease-snap); }
+  }
+  &:hover &__tile { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(0,0,0,0.12); }
+  &:hover &__tile svg.fig { transform: scale(1.06) rotate(-1deg); }
+
+  &__img {
+    width: 90%; height: 90%; object-fit: contain;
+    transition: transform 320ms var(--ease-snap);
+    mix-blend-mode: multiply;
+  }
+  &:hover &__img { transform: scale(1.05); }
+
+  &__cap { position: absolute; bottom: 8px; left: 12px; font-size: 9px; color: var(--ink-soft); opacity: 0.8; }
+  &__pos { position: absolute; top: 12px; left: 12px; }
+
+  // quick-add reveals on hover
+  &__quick {
+    position: absolute; right: 12px; bottom: 12px;
+    width: 38px; height: 38px; border-radius: 999px;
+    background: var(--ink); color: #fff; border: none;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; line-height: 1; cursor: pointer;
+    opacity: 0; transform: translateY(8px) scale(0.9);
+    transition: all 250ms var(--ease-snap); box-shadow: 0 6px 16px rgba(0,0,0,0.22);
+    &:hover { background: var(--cta-cyan); }
+  }
+  &:hover &__quick { opacity: 1; transform: none; }
+
+  &__body { padding: 16px 2px 0; display: flex; flex-direction: column; gap: 10px; }
+  &__name {
+    font-family: var(--font-body); font-weight: 500; font-size: 14px; line-height: 1.4; color: #2b2b2b;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 39px;
+  }
+  &__row { display: flex; align-items: center; justify-content: space-between; }
+  &__bell { color: var(--ink-mute); display: inline-flex; transition: color 150ms; }
+  &:hover &__bell { color: var(--ink); }
+
+  // centered "pick" card (POP NOW)
+  &--pick {
+    text-align: center;
+    .aip-card__body { align-items: center; gap: 12px; }
+    .aip-card__name { text-align: center; }
+  }
+}
+
+// price (namespaced — do NOT collide with Magento catalog .price)
+.aip-price {
+  font-family: var(--font-display); font-weight: 800; font-size: 16px;
+  color: var(--price); font-variant-numeric: tabular-nums;
+
+  small { font-weight: 500; font-size: 13px; color: var(--ink-mute); }
+  .was  { color: var(--price-was); text-decoration: line-through; font-weight: 400; font-size: 13px; margin-left: 6px; }
+  .sale { color: var(--price-sale); }
+}
+
+.aip-points { font-family: var(--font-display); font-weight: 800; font-size: 17px; color: var(--points); }
+
+// ---------------- chips ----------------
+.aip-chip {
+  font-family: var(--font-display); font-size: 13px; font-weight: 600; color: var(--ink);
+  background: var(--bg-soft); border: none; border-radius: 999px; padding: 9px 18px;
+  cursor: pointer; transition: all 150ms var(--ease-soft);
+  display: inline-flex; align-items: center; gap: 7px;
+  text-transform: uppercase; letter-spacing: 0.03em;
+  &:hover { background: var(--ink); color: #fff; }
+}
+
+// ---------------- responsive ----------------
+@media (max-width: 1000px) {
+  .aip-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .aip-grid-3 { grid-template-columns: 1fr; }
+  .aip-wrap { padding-left: 18px; padding-right: 18px; }
+}
