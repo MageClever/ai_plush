@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "050a16c7fb07758cf7d97e0229598552",
+    "content-hash": "b6469a9eb19fc04adb4014870005eff6",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -18659,6 +18659,91 @@
                 "source": "https://github.com/magento/magento-zend-pdf/tree/1.16.6"
             },
             "time": "2025-12-11T10:52:59+00:00"
+        },
+        {
+            "name": "mageplaza/module-banner-slider",
+            "version": "4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mageplaza/magento-2-banner-slider.git",
+                "reference": "63a4bc505c60dd08b66ba80fba21c32f93921421"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mageplaza/magento-2-banner-slider/zipball/63a4bc505c60dd08b66ba80fba21c32f93921421",
+                "reference": "63a4bc505c60dd08b66ba80fba21c32f93921421",
+                "shasum": ""
+            },
+            "require": {
+                "mageplaza/module-core": "^1.5.13"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Mageplaza\\BannerSlider\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Mageplaza",
+                    "email": "support@mageplaza.com",
+                    "homepage": "https://www.mageplaza.com",
+                    "role": "Technical Support"
+                }
+            ],
+            "description": "Magento 2 Banner Slider extension",
+            "support": {
+                "source": "https://github.com/mageplaza/magento-2-banner-slider/tree/v4.1.1"
+            },
+            "time": "2025-05-21T09:18:23+00:00"
+        },
+        {
+            "name": "mageplaza/module-core",
+            "version": "1.5.17",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mageplaza/module-core.git",
+                "reference": "0f69c32878d95282fa7f18866b8ea6bbd49580f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mageplaza/module-core/zipball/0f69c32878d95282fa7f18866b8ea6bbd49580f8",
+                "reference": "0f69c32878d95282fa7f18866b8ea6bbd49580f8",
+                "shasum": ""
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Mageplaza\\Core\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Mageplaza",
+                    "email": "support@mageplaza.com",
+                    "homepage": "https://www.mageplaza.com",
+                    "role": "Technical Support"
+                }
+            ],
+            "description": "Mageplaza Core for Magento 2",
+            "support": {
+                "source": "https://github.com/mageplaza/module-core/tree/v1.5.17"
+            },
+            "time": "2026-06-10T10:08:55+00:00"
         },
         {
             "name": "marc-mabe/php-enum",
